@@ -1,16 +1,20 @@
 "use strict";
 
+// Enable JavaScript-only styling through the document root.
 document.documentElement.classList.add("js");
 
+// Cache the mobile navigation elements used by the menu handlers.
 const navToggle = document.querySelector(".nav-toggle");
 const siteNav = document.querySelector(".site-nav");
 
+// Reset the mobile menu to its closed state.
 function closeNavigation() {
   navToggle.setAttribute("aria-expanded", "false");
   navToggle.setAttribute("aria-label", "Open navigation menu");
   siteNav.classList.remove("is-open");
 }
 
+// Toggle the mobile navigation and keep accessibility attributes in sync.
 navToggle.addEventListener("click", () => {
   const isExpanded = navToggle.getAttribute("aria-expanded") === "true";
   navToggle.setAttribute("aria-expanded", String(!isExpanded));
@@ -18,10 +22,12 @@ navToggle.addEventListener("click", () => {
   siteNav.classList.toggle("is-open", !isExpanded);
 });
 
+// Close the mobile navigation after a menu link is selected.
 siteNav.addEventListener("click", (event) => {
   if (event.target.closest("a")) closeNavigation();
 });
 
+// Allow Escape to close the navigation and shopping basket.
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeNavigation();
@@ -29,6 +35,7 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
+// Find and hide book cards that do not match the search text.
 const searchInput = document.querySelector("#book-search");
 const bookCards = [...document.querySelectorAll(".book-card")];
 const bookResults = document.querySelector("#book-results");
@@ -48,6 +55,7 @@ searchInput.addEventListener("input", () => {
     : `Showing all ${bookCards.length} books.`;
 });
 
+// Cache shopping basket elements and initialize basket state.
 const basketCount = document.querySelector("#basket-count");
 const basketSummary = document.querySelector(".basket summary");
 const basketItems = document.querySelector("#basket-items");
@@ -59,6 +67,7 @@ const basket = new Map();
 const storageKey = "paper-books-basket";
 const formatPrice = (amount) => `${new Intl.NumberFormat("en-AF").format(amount)} AFN`;
 
+// Persist the basket in local storage and report whether saving succeeded.
 function saveBasket() {
   try {
     localStorage.setItem(storageKey, JSON.stringify([...basket]));
@@ -68,6 +77,7 @@ function saveBasket() {
   }
 }
 
+// Rebuild the basket items, quantities, total, and email order link.
 function renderBasket() {
   basketItems.replaceChildren();
   let itemCount = 0;
@@ -87,6 +97,7 @@ function renderBasket() {
     removeButton.type = "button";
     removeButton.textContent = "Remove";
     removeButton.setAttribute("aria-label", `Remove ${title} from basket`);
+    // Remove one title entirely and update the saved basket.
     removeButton.addEventListener("click", () => {
       basket.delete(title);
       const saved = saveBasket();
@@ -114,6 +125,7 @@ function renderBasket() {
   }
 }
 
+// Restore and validate previously saved basket entries.
 function restoreBasket() {
   try {
     const saved = localStorage.getItem(storageKey);
@@ -141,6 +153,7 @@ function restoreBasket() {
   }
 }
 
+// Connect each book card's add-to-basket button.
 for (const card of bookCards) {
   card.querySelector(".add-to-basket").addEventListener("click", () => {
     const title = card.querySelector("h3").textContent.trim();
@@ -160,6 +173,7 @@ for (const card of bookCards) {
 restoreBasket();
 renderBasket();
 
+// Provide client-side feedback for the newsletter form.
 document.querySelector(".newsletter-form").addEventListener("submit", (event) => {
   event.preventDefault();
   document.querySelector("#newsletter-feedback").textContent =
