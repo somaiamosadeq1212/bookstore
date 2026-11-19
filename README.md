@@ -4,7 +4,7 @@ A responsive bookstore landing page built with **HTML, CSS, and vanilla JavaScri
 
 ## Features
 
-- Welcome modal appears before the landing page and closes when the visitor clicks the button or after 20 seconds.
+- Welcome modal appears before the landing page and closes when the visitor clicks the button or after 10 seconds.
 - Responsive layout with a mobile navigation menu.
 - Search featured books by title, author, or description.
 - Add books to a basket, remove them, and see the item count and total.
