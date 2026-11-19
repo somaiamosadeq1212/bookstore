@@ -10,9 +10,10 @@ A responsive bookstore landing page built with **HTML, CSS, and vanilla JavaScri
 - Add books to a basket, remove them, and see the item count and total.
 - Basket contents are saved in the browser's local storage.
 - Prepare an order through an email link.
+- Contact the bookstore with a form that prepares a message in the visitor's email app.
 - Afghan afghani (AFN) prices and a newsletter sign-up demo.
 
-> The newsletter form is a front-end demonstration and does not send or store email addresses. Placing an order opens the visitor's email application.
+> This is a static front-end project. The contact form and order links open the visitor's email application; messages are sent only if the visitor reviews and sends them. The newsletter form is a demonstration and does not send or store email addresses.
 
 ## Built with
 
@@ -49,7 +50,7 @@ If the default branch is not named `main`, select the branch that contains `inde
 bookstore/
 ├── index.html       # Page content and layout
 ├── style.css        # Responsive styles
-├── script.js        # Navigation, search, welcome modal, and basket behavior
+├── script.js        # Navigation, search, welcome modal, basket, and contact form behavior
 ├── images/          # Logo and book imagery
 └── README.md
 ```

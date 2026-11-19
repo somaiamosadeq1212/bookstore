@@ -198,3 +198,25 @@ document.querySelector(".newsletter-form").addEventListener("submit", (event) =>
   document.querySelector("#newsletter-feedback").textContent =
     "Thanks for your interest. Newsletter sign-up is not connected yet, so your email was not sent.";
 });
+
+// Open a prefilled email so the visitor can review and send the contact message.
+const contactForm = document.querySelector("#contact-form");
+contactForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const name = document.querySelector("#contact-name").value.trim();
+  const email = document.querySelector("#contact-email").value.trim();
+  const message = document.querySelector("#contact-message").value.trim();
+  const contactFeedback = document.querySelector("#contact-feedback");
+
+  if (!name || !email || !message) {
+    contactFeedback.textContent = "Please enter your name, a valid email address, and a message.";
+    return;
+  }
+
+  const subject = encodeURIComponent(`Website message from ${name}`);
+  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+  contactFeedback.textContent =
+    "Your email app should open with your message. Review it and press Send to contact us.";
+  window.location.href = `mailto:hello@paperbooks.af?subject=${subject}&body=${body}`;
+});
