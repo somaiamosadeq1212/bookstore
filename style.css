@@ -31,6 +31,72 @@ body {
   line-height: 1.65;
 }
 
+body.welcome-pending {
+  overflow: hidden;
+}
+
+body.welcome-pending > .site-header,
+body.welcome-pending > .page-content,
+body.welcome-pending > .site-footer {
+  visibility: hidden;
+}
+
+.welcome-overlay {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  padding: 24px;
+  display: grid;
+  place-items: center;
+  background: rgb(26 39 31 / 78%);
+  backdrop-filter: blur(5px);
+}
+
+.welcome-overlay[hidden] {
+  display: none;
+}
+
+.welcome-dialog {
+  width: min(100%, 520px);
+  padding: clamp(28px, 7vw, 52px);
+  border: 1px solid rgb(53 91 69 / 12%);
+  border-radius: 24px;
+  background:
+    radial-gradient(ellipse at 100% 0%, rgb(196 123 75 / 12%), transparent 19rem),
+    var(--surface);
+  box-shadow: 0 24px 70px rgb(0 0 0 / 24%);
+  text-align: center;
+}
+
+.welcome-dialog img {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px;
+}
+
+.welcome-dialog .eyebrow {
+  margin-bottom: 10px;
+}
+
+.welcome-dialog h1 {
+  margin: 0 0 14px;
+  color: var(--green-dark);
+  font-size: clamp(2rem, 8vw, 3rem);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+}
+
+.welcome-dialog > p:not(.eyebrow) {
+  margin-bottom: 26px;
+  color: var(--muted);
+}
+
+.welcome-close {
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
 a {
   color: var(--green);
 }

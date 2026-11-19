@@ -3,6 +3,25 @@
 // Enable JavaScript-only styling through the document root.
 document.documentElement.classList.add("js");
 
+// Show the landing page when the welcome message is dismissed or times out.
+const welcomeOverlay = document.querySelector("#welcome-overlay");
+const welcomeClose = document.querySelector("#welcome-close");
+const welcomeDialog = document.querySelector(".welcome-dialog");
+let welcomeTimer;
+
+function closeWelcome() {
+  if (!document.body.classList.contains("welcome-pending")) return;
+
+  window.clearTimeout(welcomeTimer);
+  document.body.classList.remove("welcome-pending");
+  welcomeOverlay.hidden = true;
+  document.querySelector(".brand").focus();
+}
+
+welcomeClose.addEventListener("click", closeWelcome);
+welcomeDialog.focus();
+welcomeTimer = window.setTimeout(closeWelcome, 20000);
+
 // Cache the mobile navigation elements used by the menu handlers.
 const navToggle = document.querySelector(".nav-toggle");
 const siteNav = document.querySelector(".site-nav");

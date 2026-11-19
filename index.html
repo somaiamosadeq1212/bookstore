@@ -8,7 +8,17 @@
   <title>Paper Books Afghanistan | A World of Books</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="welcome-pending">
+  <div class="welcome-overlay" id="welcome-overlay">
+    <section class="welcome-dialog" role="dialog" aria-modal="true" aria-labelledby="welcome-modal-title" aria-describedby="welcome-modal-description" tabindex="-1">
+      <img src="images/paper-books-logo.svg" alt="" width="64" height="64">
+      <p class="eyebrow">Paper Books Afghanistan</p>
+      <h1 id="welcome-modal-title">Welcome to Paper Books</h1>
+      <p id="welcome-modal-description">Discover your next favorite story and explore a world of books, ideas, and new perspectives.</p>
+      <button class="button welcome-close" id="welcome-close" type="button">Enter the bookstore</button>
+    </section>
+  </div>
+
   <!-- Site header: brand, mobile navigation toggle, and main navigation -->
   <header class="site-header">
     <a class="brand" href="#home" aria-label="Paper Books Afghanistan home">
