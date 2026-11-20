@@ -15,12 +15,12 @@ function closeWelcome() {
   window.clearTimeout(welcomeTimer);
   document.body.classList.remove("welcome-pending");
   welcomeOverlay.hidden = true;
-  document.querySelector(".brand").focus();
+  document.querySelector(".brand").focus({ preventScroll: true });
 }
 
 welcomeClose.addEventListener("click", closeWelcome);
 welcomeDialog.focus();
-welcomeTimer = window.setTimeout(closeWelcome, 10000);
+welcomeTimer = window.setTimeout(closeWelcome, 3500);
 
 // Cache the mobile navigation elements used by the menu handlers.
 const navToggle = document.querySelector(".nav-toggle");
