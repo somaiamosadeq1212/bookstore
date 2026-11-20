@@ -49,8 +49,10 @@ If the default branch is not named `main`, select the branch that contains `inde
 ```text
 bookstore/
 ├── index.html       # Page content and layout
-├── style.css        # Responsive styles
-├── script.js        # Navigation, search, welcome modal, basket, and contact form behavior
+├── css/
+│   └── style.css    # Responsive styles
+├── js/
+│   └── script.js    # Navigation, search, welcome modal, basket, and contact form behavior
 ├── images/          # Logo and book imagery
 └── README.md
 ```

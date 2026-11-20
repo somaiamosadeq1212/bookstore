@@ -20,7 +20,7 @@ function closeWelcome() {
 
 welcomeClose.addEventListener("click", closeWelcome);
 welcomeDialog.focus();
-welcomeTimer = window.setTimeout(closeWelcome, 3500);
+welcomeTimer = window.setTimeout(closeWelcome, 3000);
 
 // Cache the mobile navigation elements used by the menu handlers.
 const navToggle = document.querySelector(".nav-toggle");
